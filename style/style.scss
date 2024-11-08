@@ -1,0 +1,279 @@
+// Цветовые переменные
+$cosmo-black: #1b1b2f; // Основной черный цвет
+$cosmo-black-light: #2c2c42; // Светлый вариант черного
+$yellow-neon: #e5a50a; // Неоновый желтый
+$white: #ffffff; // Белый
+
+// Градиент
+$background-color: #ffaa99;
+$background-gradient:
+  radial-gradient(at 18% 33%, hsla(274,74%,71%,1) 0px, transparent 50%),
+  radial-gradient(at 83% 78%, hsla(69,91%,72%,1) 0px, transparent 50%),
+  radial-gradient(at 96% 25%, hsla(100,61%,68%,1) 0px, transparent 50%),
+  radial-gradient(at 46% 39%, hsla(289,69%,63%,1) 0px, transparent 50%),
+  radial-gradient(at 86% 81%, hsla(314,96%,62%,1) 0px, transparent 50%),
+  radial-gradient(at 50% 69%, hsla(263,70%,62%,1) 0px, transparent 50%),
+  radial-gradient(at 43% 86%, hsla(254,79%,60%,1) 0px, transparent 50%);
+
+// Общие стили для всех элементов
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; // Универсальная модель расчета размеров
+}
+
+// Стили для body
+body {
+  font-family: Arial, sans-serif;
+  color: $white;
+  background-color: $background-color;
+  padding: 20px;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: $background-gradient;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+}
+
+// Общий стиль для закругленных блоков с градиентной рамкой
+.rounded-bordered {
+  position: relative;
+  background-color: $cosmo-black-light;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+// Заголовок
+.header {
+  @extend .rounded-bordered;
+  text-align: center;
+
+  h1, h2 {
+    color: $white;
+  }
+}
+
+// Основной контейнер с элементами
+main {
+  display: flex;
+  flex-wrap: wrap; // Allow items to wrap to the next line if they don't fit
+  justify-content: space-between;
+  margin-top: 20px;
+
+  .form-container,
+  .canvas-container {
+    flex: 1 1 30%; // Allow items to shrink and grow, with a base width of 30%
+    min-width: 300px; // Minimum width for each section to avoid shrinking too much
+    margin: 10px;
+  }
+
+  .table-view {
+    flex: 1 1 30%;
+    display: inline-block; // Wrap content around the table
+    margin: 10px;
+    padding: 20px;
+    overflow-x: auto;
+    min-width: 600px;
+  }
+}
+
+@media (max-width: 500px) {
+  main {
+    flex-direction: column;
+    align-items: center;
+
+    .form-container,
+    .canvas-container,
+    .table-view {
+      flex: 1 1 100%;
+      min-width: 100%;
+      margin: 5px 0;
+    }
+
+    .table-view {
+      padding: 10px;
+      min-width: unset; // Убираем минимальную ширину для мобильных устройств
+    }
+  }
+}
+
+// Стили для формы
+.form-container {
+  @extend .rounded-bordered;
+  flex: 1;
+  margin-right: 20px;
+
+  h2 {
+    margin-bottom: 15px;
+    color: $white;
+  }
+
+  .input-form {
+    .input-group {
+      margin-bottom: 15px;
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        color: $white;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        background-color: $cosmo-black;
+        color: $white;
+        outline: none;
+        border: 2px solid transparent;
+        border-radius: 12px;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+          border-color: $yellow-neon;
+        }
+      }
+
+      button {
+          padding: 10px 20px;
+          background-color: darken($cosmo-black-light, 5%);
+          color: $white;
+          cursor: pointer;
+          border: 2px solid transparent;
+          border-radius: 12px;
+          transition: box-shadow 0.3s ease, background-color 0.3s ease;
+
+          &:hover {
+              box-shadow: 0 0 8px $yellow-neon, 0 0 16px $yellow-neon;
+              background-color: darken($cosmo-black-light, 10%);
+          }
+      }
+
+      button.selected {
+          border: 2px solid $yellow-neon;
+      }
+
+    }
+  }
+}
+
+// Стили для таблицы
+.table-view {
+  background-color: $cosmo-black-light;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid $white;
+    color: $white;
+
+    th, td {
+      padding: 10px;
+      border: 1px solid $white;
+      background-color: $cosmo-black;
+    }
+
+    tr:first-child {
+      font-weight: bold;
+    }
+  }
+}
+
+// Стили для футера
+footer {
+  @extend .rounded-bordered;
+  text-align: center;
+  margin-top: 20px;
+  color: $white;
+}
+
+// Основной стиль тоста
+.toast {
+  padding: 15px 25px;
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 16px;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+// Цвета для каждого типа тоста
+$toast-warning: #e5a50a; // Желтый для предупреждений
+$toast-info: #4a90e2; // Синий для информации
+$toast-error: #e53e3e; // Красный для ошибок
+$toast-ok: #38a169; // Зеленый для успехов
+@function toast-dark($color) {
+  @return mix($color, #000000, 50%);
+}
+
+#toast-container {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+}
+
+// Подстили для типов уведомлений
+.toast-warning {
+  background-color: $toast-warning;
+  border: 3px solid toast-dark($toast-warning);
+}
+
+.toast-info {
+  background-color: $toast-info;
+  border: 3px solid toast-dark($toast-info);
+}
+
+.toast-error {
+  background-color: $toast-error;
+  border: 3px solid toast-dark($toast-error);
+}
+
+.toast-ok {
+  background-color: $toast-ok;
+  border: 3px solid toast-dark($toast-ok);
+}
+
+
+.canvas-container {
+  @extend .rounded-bordered;
+  flex: 1;
+  margin-left: 20px;
+  text-align: center;
+
+  h2 {
+    color: $white;
+    margin-bottom: 10px;
+  }
+
+  canvas {
+    background-color: $cosmo-black-light;
+    border: 2px solid $yellow-neon;
+    border-radius: 12px;
+  }
+}
+
+.merriweather {
+  font-family: "Merriweather", serif;
+  font-weight: 400;
+  font-style: normal;
+}

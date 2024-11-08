@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1 work | 409117</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <script type="module" src="../scripts/dist/bundle.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header merriweather">
+        <h1>ФИО: Тимофей Максимович Мельников</h1>
+        <h2>Группа: P3216</h2>
+        <h2>Вариант: 409117</h2>
+    </header>
+    <main>
+        <section class="form-container">
+            <h2>Отправить форму</h2>
+            <form class="input-form">
+                <div class="input-group">
+                    <label for="x">Введите X:</label>
+                    <input type="text" id="x" name="x" class="input-text" pattern="-?[0-5]|3"
+                           placeholder="От -5 дo 3"
+                           title="Введите число от -5 до 3">
+                </div>
+                <div class="input-group">
+                    <label for="y">Введите Y:</label>
+                    <div class="button-group" id="y">
+                        <button type="button" class="button-y" value="-5">-5</button>
+                        <button type="button" class="button-y" value="-4">-4</button>
+                        <button type="button" class="button-y" value="-3">-3</button>
+                        <button type="button" class="button-y" value="-2">-2</button>
+                        <button type="button" class="button-y" value="-1">-1</button>
+                        <button type="button" class="button-y" value="0">0</button>
+                        <button type="button" class="button-y" value="1">1</button>
+                        <button type="button" class="button-y" value="2">2</button>
+                        <button type="button" class="button-y" value="3">3</button>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="radius">Введите радиус:</label>
+                    <div class="button-group" id="radius">
+                        <button type="button" class="button-radius" value="1">1</button>
+                        <button type="button" class="button-radius" value="1.5">1.5</button>
+                        <button type="button" class="button-radius" value="2">2</button>
+                        <button type="button" class="button-radius" value="2.5">2.5</button>
+                        <button type="button" class="button-radius" value="3">3</button>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <button type="button" onclick="submitForm()" class="submit-button">Отправить</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="table-view">
+            <table>
+                <tr>
+                    <td>Request time</td>
+                    <td>Running time</td>
+                    <td>Coordinate X</td>
+                    <td>Coordinate Y</td>
+                    <td>Radius length</td>
+                    <td>Result</td>
+                </tr>
+            </table>
+        </section>
+
+        <section class="canvas-container">
+            <h2>График</h2>
+            <canvas id="plotCanvas" width="300" height="300"></canvas>
+        </section>
+    </main>
+
+    <footer class="merriweather footer">
+        <p>&copy; 2024 by Мельников Т.М.</p>
+    </footer>
+    <div id="toast-container"></div>
+</body>
+</html>
+

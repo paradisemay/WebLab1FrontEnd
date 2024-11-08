@@ -1,0 +1,25 @@
+{
+  "devDependencies": {
+    "@types/jquery": "^3.5.32",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.6.3",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1"
+  },
+  "name": "src",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack serve --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
