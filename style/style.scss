@@ -7,13 +7,23 @@ $white: #ffffff; // Белый
 // Градиент
 $background-color: #ffaa99;
 $background-gradient:
-  radial-gradient(at 18% 33%, hsla(274,74%,71%,1) 0px, transparent 50%),
-  radial-gradient(at 83% 78%, hsla(69,91%,72%,1) 0px, transparent 50%),
-  radial-gradient(at 96% 25%, hsla(100,61%,68%,1) 0px, transparent 50%),
-  radial-gradient(at 46% 39%, hsla(289,69%,63%,1) 0px, transparent 50%),
-  radial-gradient(at 86% 81%, hsla(314,96%,62%,1) 0px, transparent 50%),
-  radial-gradient(at 50% 69%, hsla(263,70%,62%,1) 0px, transparent 50%),
-  radial-gradient(at 43% 86%, hsla(254,79%,60%,1) 0px, transparent 50%);
+radial-gradient(at 18% 33%, hsla(274,74%,71%,1) 0px, transparent 50%),
+radial-gradient(at 83% 78%, hsla(69,91%,72%,1) 0px, transparent 50%),
+radial-gradient(at 96% 25%, hsla(100,61%,68%,1) 0px, transparent 50%),
+radial-gradient(at 46% 39%, hsla(289,69%,63%,1) 0px, transparent 50%),
+radial-gradient(at 86% 81%, hsla(314,96%,62%,1) 0px, transparent 50%),
+radial-gradient(at 50% 69%, hsla(263,70%,62%,1) 0px, transparent 50%),
+radial-gradient(at 43% 86%, hsla(254,79%,60%,1) 0px, transparent 50%);
+
+// Общий стиль для закругленных блоков с градиентной рамкой
+// Цвета для каждого типа тоста
+$toast-warning: #e5a50a; // Желтый для предупреждений
+$toast-info: #4a90e2; // Синий для информации
+$toast-error: #e53e3e; // Красный для ошибок
+$toast-ok: #38a169; // Зеленый для успехов
+@function toast-dark($color) {
+  @return mix($color, #000000, 50%);
+}
 
 // Общие стили для всех элементов
 * {
@@ -44,7 +54,6 @@ body {
   }
 }
 
-// Общий стиль для закругленных блоков с градиентной рамкой
 .rounded-bordered {
   position: relative;
   background-color: $cosmo-black-light;
@@ -144,22 +153,22 @@ main {
       }
 
       button {
-          padding: 10px 20px;
-          background-color: darken($cosmo-black-light, 5%);
-          color: $white;
-          cursor: pointer;
-          border: 2px solid transparent;
-          border-radius: 12px;
-          transition: box-shadow 0.3s ease, background-color 0.3s ease;
+        padding: 10px 20px;
+        background-color: darken($cosmo-black-light, 5%);
+        color: $white;
+        cursor: pointer;
+        border: 2px solid transparent;
+        border-radius: 12px;
+        transition: box-shadow 0.3s ease, background-color 0.3s ease;
 
-          &:hover {
-              box-shadow: 0 0 8px $yellow-neon, 0 0 16px $yellow-neon;
-              background-color: darken($cosmo-black-light, 10%);
+        &:hover {
+            box-shadow: 0 0 8px $yellow-neon, 0 0 16px $yellow-neon;
+            background-color: darken($cosmo-black-light, 10%);
           }
       }
 
       button.selected {
-          border: 2px solid $yellow-neon;
+        border: 2px solid $yellow-neon;
       }
 
     }
@@ -202,7 +211,7 @@ footer {
 .toast {
   padding: 15px 25px;
   border-radius: 5px;
-  color: #ffffff;
+  color: $white;
   font-size: 16px;
   opacity: 1;
   transition: opacity 0.5s ease;
@@ -211,14 +220,6 @@ footer {
   text-align: center;
 }
 
-// Цвета для каждого типа тоста
-$toast-warning: #e5a50a; // Желтый для предупреждений
-$toast-info: #4a90e2; // Синий для информации
-$toast-error: #e53e3e; // Красный для ошибок
-$toast-ok: #38a169; // Зеленый для успехов
-@function toast-dark($color) {
-  @return mix($color, #000000, 50%);
-}
 
 #toast-container {
     position: fixed;
